@@ -614,17 +614,7 @@ summary(interaction_model)
 
 We see that introducing this interaction term has improved the fit of our model from `r round(newmodel_summary$r.squared, 2)` to `r round(summary(interaction_model)$r.squared, 2)`, and that the interaction term is significant, so we conclude that in addition to a significant effect of the `Yr2` and `Yr3` scores, there is an additional significant effect from their interaction `Yr2*Yr3`. Let's take a moment to understand how to interpret this, since we note that some of the coefficients are now negative.
 
-Our model now includes two input variables and their interaction, so it can be written as 
-
-$$
-\begin{aligned}
-\mathrm{Final} &= \beta_0 + \beta_1\mathrm{Yr3} + \beta_2\mathrm{Yr2} + \beta_3\mathrm{Yr3}\mathrm{Yr2} \\
-&= \beta_0 + (\beta_1 + \beta_3\mathrm{Yr2})\mathrm{Yr3} + \beta_2\mathrm{Yr2} \\
-&= \beta_0 + \gamma\mathrm{Yr3} + \beta_2\mathrm{Yr2}
-\end{aligned}
-$$
-where $\gamma = \beta_1 + \beta_3\mathrm{Yr2}$.  Therefore our model has coefficients which are not constant but change with the values of the input variables.  We can conclude that the effect of an extra point in the examination in Year 3 will be different depending on how the student performed in Year 2.  Visualizing this, we can see in `r if (knitr::is_latex_output()) '<!--'` Interactive `r if (knitr::is_latex_output()) '-->'`Figure \@ref(fig:non-lin-reg-3d) that this non-constant term introduces a curvature to our fitted surface that aligns it a little more closely with the observations in our data set. 
-
+ 
 ```{r non-lin-reg-3d, fig.cap = if (knitr::is_latex_output()) {"3D visualization of the fitted \\texttt{interaction\\_model} against the \\texttt{ugtests} data"} else {"3D visualization of the fitted `interaction_model` against the `ugtests` data"}, fig.align="center", echo = FALSE, out.width = if (knitr::is_latex_output()) {"100%"}}
 
 if (knitr::is_html_output()) {
